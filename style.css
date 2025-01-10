@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #F4F6FE;
+    background-color: #d4ddff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,4 +43,9 @@ div.buttons-container {
 div.upper-buttons {
     display: flex;
     flex-wrap: wrap;
+}
+
+button.button {
+    padding: 10px;
+    border-radius: 30px;
 }
