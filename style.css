@@ -25,6 +25,8 @@ div.calculator {
     flex-direction: column;
     width: 400px;
     height: 500px;
+    background-color: #ffffff;
+    border-radius: 15px;
 }
 
 div.display-container {
