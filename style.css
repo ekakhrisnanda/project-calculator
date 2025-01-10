@@ -22,5 +22,8 @@ section.container {
 
 div.calculator {
     display: flex;
-    
+    flex-direction: column-reverse;
+    width: 400px;
+    height: 500px;
 }
+
