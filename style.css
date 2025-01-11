@@ -2,11 +2,11 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    border: 1px solid red;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 body {
-    background-color: #d4ddff;
+    background-color: #e0e3eb;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,31 +23,95 @@ section.container {
 div.calculator {
     display: flex;
     flex-direction: column;
+    gap: 20px;
     width: 400px;
-    height: 500px;
+    height: 530px;
     background-color: #ffffff;
-    border-radius: 15px;
+    border-radius: 50px;
+    padding: 30px;
+    box-shadow: 0 4px 8px 0 #00000020, 0 6px 20px 0 #00000019;
 }
 
 div.display-container {
-    border: 2px solid blue;
-    width: 100%;
-    height: 50px;
+    border: 4px solid #000000;
+    height: 65px;
+    border-radius: 100px;
+    color: #ffffff;
+    flex-shrink: 0;
 }
 
 div.buttons-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 100%;
+    gap: 15px;
 }
 
 div.upper-buttons {
     display: flex;
     flex-wrap: wrap;
+    gap: 5px;
+    justify-content: space-between;
 }
 
-button.button {
-    padding: 10px;
-    border-radius: 30px;
+div.bottom-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.button[value="del"],
+.button[value="clear"] {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.button[value="+"] {
+    background-color: #FE4359;
+    color: #ffffff;
+}
+
+.button[value="-"] {
+    background-color: #2287FE;
+    color: #ffffff;
+}
+
+.button[value="x"] {
+    background-color: #FEC703;
+    color: #ffffff;
+}
+
+.button[value="/"] {
+    background-color: #62DD76;
+    color: #ffffff;
+}
+
+.button[value="="] {
+    background-color: #E6AC4D;
+    color: #ffffff;
+}
+
+button {
+    background-color: #D7DCEF;
+    color: #4b4b4b;
+    font-size: 1.4rem;
+    font-weight: 900;
+    width: calc(25% - 10px);
+    height: 75px;
+    border-radius: 50%;
+    border: none;
+    flex: 0 0 auto;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.upper-buttons button {
+    flex: 1 0 calc(25% - 10px);
+}
+
+div.bottom-buttons button {
+    flex: 1;
+    height: 65px;
+    width: auto;
+    border-radius: 100px;
 }
