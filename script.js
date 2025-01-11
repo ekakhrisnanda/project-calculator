@@ -12,6 +12,7 @@ let nextNum;
 
 const operate = (a, b, operators) => {
     for (const operator of operators) {
+
         switch(operator) {
             case '+':
                 add(a, b);
@@ -42,8 +43,8 @@ const displayValue = () => {
 
 displayValue()
 
-
-
-// if a number button pressed stores the value in the initNum variable
-// if an operator buttons pressed store the values and prohibit to add another operator
-// if a number after operator pressed stores the value in the nextNum variable
+// when the number buttons are clicked, it goes until max n length
+// when the operate number is clicked, stores the value to initNum variable and prohibit to add another operator
+// the number buttons clicked again, once the equal button is clicked, 
+// stores the value to nextNum variable and execute operate
+// display the value
