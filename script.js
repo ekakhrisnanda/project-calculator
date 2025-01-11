@@ -8,8 +8,8 @@ const display = document.querySelector('.display-container');
 let initNum;
 let nextNum;
 
-const operate = (a, b, operator) => {
-    operators.map(operator => {
+const operate = (a, b, operators) => {
+    for (const operator of operators) {
         switch(operator) {
             case '+':
                 add(a, b);
@@ -23,5 +23,6 @@ const operate = (a, b, operator) => {
             case '/':
                 divide(a, b);
         };
-    });
-}
+    }
+};
+
