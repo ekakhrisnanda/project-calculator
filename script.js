@@ -13,22 +13,19 @@ let initNum;
 let nextNum;
 let operator;
 
-const operate = (a, b, operators) => {
-    for (const operator of operators) {
-        const operatorSymbol = operator.value;
-        switch(operatorSymbol) {
-            case '+':
-                add(a, b);
-                break;
-            case '-':
-                substract(a, b);
-                break;
-            case 'x':
-                multiply(a, b);
-                break;
-            case '/':
-                divide(a, b);
-        };
+const operate = (a, b) => {
+    switch(operator) {
+        case '+':
+            add(a, b);
+            break;
+        case '-':
+            substract(a, b);
+            break;
+        case 'x':
+            multiply(a, b);
+            break;
+        case '/':
+            divide(a, b);
     };
 };
 
