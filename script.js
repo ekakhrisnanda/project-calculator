@@ -29,7 +29,7 @@ const operate = (a, b, operators) => {
     }
 };
 
-const displayValue = () => {
+const calculate = () => {
     buttons.forEach(button => {
         let val = button.value
         button.addEventListener('click', (e) => {
@@ -41,7 +41,7 @@ const displayValue = () => {
     });
 };
 
-displayValue()
+calculate()
 
 // when the number buttons are clicked, it goes until max n length
 // when the operate number is clicked, stores the value to initNum variable and prohibit to add another operator
