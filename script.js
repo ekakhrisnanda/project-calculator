@@ -12,8 +12,8 @@ let nextNum;
 
 const operate = (a, b, operators) => {
     for (const operator of operators) {
-
-        switch(operator) {
+        const operatorSymbol = operator.value;
+        switch(operatorSymbol) {
             case '+':
                 add(a, b);
                 break;
