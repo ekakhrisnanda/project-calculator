@@ -3,12 +3,15 @@ const substract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
-
 const buttons = document.querySelectorAll('.button')
 const operators = document.querySelectorAll('.operator');
 const display = document.querySelector('.display-container');
+const deleteButton = document.querySelector('.del');
+const clearButton = document.querySelector('clear');
+
 let initNum;
 let nextNum;
+let operator;
 
 const operate = (a, b, operators) => {
     for (const operator of operators) {
@@ -26,17 +29,23 @@ const operate = (a, b, operators) => {
             case '/':
                 divide(a, b);
         };
-    }
+    };
 };
 
 const calculate = () => {
     buttons.forEach(button => {
-        let val = button.value
         button.addEventListener('click', (e) => {
-           let val = e.target.value;
+            const buttonValue = e.target.value;
            if(e.target.classList.contains('operator') || e.target.classList.contains('number')) {
-            display.textContent = val;
-           } 
+            display.textContent += buttonValue;
+           } else if (buttonValue === '+' || buttonValue === '-' || buttonValue === 'x' || buttonValue === '/') {
+            initNum = parseFloat(display.textContent);
+            operator = buttonValue;
+           } else if (buttonValue === '=') {
+            nextNum = parseFloat(display.textContent);
+            const result = operate(initNum, nextNum);
+            display.textContent = result;
+           }
         });
     });
 };
