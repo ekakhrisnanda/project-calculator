@@ -65,33 +65,33 @@ div.bottom-buttons {
     gap: 5px;
 }
 
-.button[value="del"],
-.button[value="clear"] {
+button[value="del"],
+button[value="clear"] {
     background-color: #000000;
     color: #ffffff;
 }
 
-.button[value="+"] {
+button[value="+"] {
     background-color: #FE4359;
     color: #ffffff;
 }
 
-.button[value="-"] {
+button[value="-"] {
     background-color: #2287FE;
     color: #ffffff;
 }
 
-.button[value="x"] {
+button[value="x"] {
     background-color: #FEC703;
     color: #ffffff;
 }
 
-.button[value="/"] {
+button[value="/"] {
     background-color: #62DD76;
     color: #ffffff;
 }
 
-.button[value="="] {
+button[value="="] {
     background-color: #E6AC4D;
     color: #ffffff;
 }
