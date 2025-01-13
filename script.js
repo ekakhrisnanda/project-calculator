@@ -43,6 +43,14 @@ const calculate = () => {
             }
         });
     });
+
+    clearButton.addEventListener('click', () => {
+        display.textContent = '';
+    });
+
+    deleteButton.addEventListener('click', () => {
+        display.textContent = display.textContent.slice(0, -1);
+    });
 };
 
 calculate()
