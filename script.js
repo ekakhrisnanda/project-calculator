@@ -26,16 +26,24 @@ const calculate = () => {
     buttons.forEach(button => {
         button.addEventListener('click', (e) => {
             const buttonValue = e.target.value;
+
+            // limit displayed characters
+            if(display.textContent.length > 22) {
+                return;
+            }
+
             if(e.target.classList.contains('number')) {
                 display.textContent += buttonValue;
             } else if(['+', '-', 'x', '/'].includes(buttonValue)) {
                 if (initNum === null) {
                     initNum = parseFloat(display.textContent);
+                    console.log(initNum);
                 }
                 operator = buttonValue;
-                display.textContent +=` ${operator} ` ;
+                display.textContent +=`${operator}` ;
             } else if (buttonValue === '=') {
                 nextNum = parseFloat(display.textContent.split(operator)[1].trim());
+                console.log(initNum);
                 let result = operate(initNum, nextNum);
                 display.textContent = result;
                 initNum = result;
@@ -46,6 +54,9 @@ const calculate = () => {
 
     clearButton.addEventListener('click', () => {
         display.textContent = '';
+        initNum = null;
+        nextNum = null;
+        operator = null;
     });
 
     deleteButton.addEventListener('click', () => {
