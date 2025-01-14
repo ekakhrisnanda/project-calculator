@@ -27,27 +27,27 @@ const calculate = () => {
         button.addEventListener('click', (e) => {
             const buttonValue = e.target.value;
 
-            // limit displayed characters
-            if(display.textContent.length > 22) {
+            // limit displayed character
+            if (display.textContent.length > 20 && e.target.classList.includes('number')) {
                 return;
             }
 
             if(e.target.classList.contains('number')) {
                 display.textContent += buttonValue;
             } else if(['+', '-', 'x', '/'].includes(buttonValue)) {
-                if (initNum === null) {
+                if (operator === null) {
                     initNum = parseFloat(display.textContent);
-                    console.log(initNum);
+                    operator = buttonValue;
+                    display.textContent +=`${operator}`;
                 }
-                operator = buttonValue;
-                display.textContent +=`${operator}` ;
             } else if (buttonValue === '=') {
-                nextNum = parseFloat(display.textContent.split(operator)[1].trim());
-                console.log(initNum);
-                let result = operate(initNum, nextNum);
-                display.textContent = result;
-                initNum = result;
-                operator = null;
+                if(operator !== null) {
+                    nextNum = parseFloat(display.textContent.split(operator)[1].trim());
+                    let result = operate(initNum, nextNum);
+                    display.textContent = result;
+                    initNum = result;
+                    operator = null;
+                }
             }
         });
     });
