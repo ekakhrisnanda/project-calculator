@@ -33,20 +33,33 @@ const calculate = () => {
             }
 
             if(e.target.classList.contains('number')) {
+                if(buttonValue === '.') {
+                    let currentNumber = display.textContent.split(/[\+\-\x\/]).pop();
+
+                    if(currentNumber.includes(buttonValue)) {
+                        return;
+                    }
+                }
                 display.textContent += buttonValue;
-            } else if(['+', '-', 'x', '/'].includes(buttonValue)) {
+            } 
+            
+            else if(['+', '-', 'x', '/'].includes(buttonValue)) {
                 if (operator === null) {
                     initNum = parseFloat(display.textContent);
                     operator = buttonValue;
                     display.textContent +=`${operator}`;
                 } else {
                     nextNum = parseFloat(display.textContent.split(operator)[1].trim());
-                    let result = operate(initNum, nextNum);
-                    display.textContent = result;
-                    initNum = result;
-                    operator = null;
+                    if(nextNum) {
+                        let result = operate(initNum, nextNum);
+                        display.textContent = result;
+                        initNum = result;
+                        operator = null;
+                    }
                 }
-            } else if (buttonValue === '=') {
+            } 
+            
+            else if (buttonValue === '=') {
                 if(operator !== null) {
                     nextNum = parseFloat(display.textContent.split(operator)[1].trim());
                     let result = operate(initNum, nextNum);
@@ -66,7 +79,13 @@ const calculate = () => {
     });
 
     deleteButton.addEventListener('click', () => {
-        display.textContent = display.textContent.slice(0, -1);
+        if(display.textContent.length > 0) {
+            display.textContent = display.textContent.slice(0, -1);
+
+            if(display.textContent.indexOf(operator) === -1) {
+                operator = null;
+            }
+        }
     });
 };
 
