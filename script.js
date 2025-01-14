@@ -39,6 +39,12 @@ const calculate = () => {
                     initNum = parseFloat(display.textContent);
                     operator = buttonValue;
                     display.textContent +=`${operator}`;
+                } else {
+                    nextNum = parseFloat(display.textContent.split(operator)[1].trim());
+                    let result = operate(initNum, nextNum);
+                    display.textContent = result;
+                    initNum = result;
+                    operator = null;
                 }
             } else if (buttonValue === '=') {
                 if(operator !== null) {
