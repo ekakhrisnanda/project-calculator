@@ -34,7 +34,7 @@ const calculate = () => {
 
             if(e.target.classList.contains('number')) {
                 if(buttonValue === '.') {
-                    let currentNumber = display.textContent.split(/[\+\-\x\/]).pop();
+                    let currentNumber = display.textContent.split(/[\+\-\x\/]/).pop();
 
                     if(currentNumber.includes(buttonValue)) {
                         return;
@@ -71,14 +71,21 @@ const calculate = () => {
         });
     });
 
-    clearButton.addEventListener('click', () => {
+    const handleClear = () => {
         display.textContent = '';
         initNum = null;
         nextNum = null;
         operator = null;
+    }
+
+    clearButton.addEventListener('click', handleClear);
+    document.addEventListener('keypress', (e) => {
+        if(e.key === 'c' || e.key === 'C') {
+            handleClear();
+        }
     });
 
-    deleteButton.addEventListener('click', () => {
+    const handleDelete = () => {
         if(display.textContent.length > 0) {
             display.textContent = display.textContent.slice(0, -1);
 
@@ -86,7 +93,14 @@ const calculate = () => {
                 operator = null;
             }
         }
+    }
+
+    deleteButton.addEventListener('click', handleDelete);
+    document.addEventListener('keypress', (e) => {
+        if(e.key === 'Backspace') {
+            handleDelete();
+        }
     });
 };
 
-calculate()
+calculate();
