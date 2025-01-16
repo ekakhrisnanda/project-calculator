@@ -23,6 +23,42 @@ const operate = (a, b) => {
 };
 
 const calculate = () => {
+    // keyboard event
+    document.addEventListener('keydown', (e) => {
+        const buttonValue = e.key;
+
+        if (display.textContent.length > 20 && buttonValue.classList.includes('number')) {
+            return;
+        }
+
+        if(!isNaN(buttonValue)) {
+            display.textContent += buttonValue;
+        } else if (['+', '-', 'x', '/'].includes(buttonValue)) {
+            if (operator === null) {
+                initNum = parseFloat(display.textContent);
+                operator = buttonValue;
+                display.textContent +=`${operator}`;
+            } else {
+                nextNum = parseFloat(display.textContent.split(operator)[1].trim());
+                if(nextNum) {
+                    let result = operate(initNum, nextNum);
+                    display.textContent = result;
+                    initNum = result;
+                    operator = null;
+                }
+            }
+        } else if (buttonValue === 'Enter') {
+            if(operator !== null) {
+                nextNum = parseFloat(display.textContent.split(operator)[1].trim());
+                let result = operate(initNum, nextNum);
+                display.textContent = result;
+                initNum = result;
+                operator = null;
+            }
+        }
+    });
+
+    // mouse event
     buttons.forEach(button => {
         button.addEventListener('click', (e) => {
             const buttonValue = e.target.value;
@@ -79,7 +115,7 @@ const calculate = () => {
     }
 
     clearButton.addEventListener('click', handleClear);
-    document.addEventListener('keypress', (e) => {
+    document.addEventListener('keyup', (e) => {
         if(e.key === 'c' || e.key === 'C') {
             handleClear();
         }
@@ -96,7 +132,7 @@ const calculate = () => {
     }
 
     deleteButton.addEventListener('click', handleDelete);
-    document.addEventListener('keypress', (e) => {
+    document.addEventListener('keyup', (e) => {
         if(e.key === 'Backspace') {
             handleDelete();
         }
